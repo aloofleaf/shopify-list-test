@@ -1,0 +1,34 @@
+<!--   <script type="text/javascript">
+    alert('shop: <%=shop%>');
+     ShopifyApp.init({ 
+      apiKey: '<%= api_key %>',
+      shopOrigin: 'https://<%= shop %>',
+      // forceRedirect:false,
+      debug:true
+    });
+  </script> -->
+
+
+<!-- 
+  <script type="text/javascript">
+    ShopifyApp.ready(function(){
+      alert("Ready!!");
+    });
+
+    ShopifyApp.ready(function(){
+      ShopifyApp.Bar.initialize({
+        // icon: 'http://localhost:3001/assets/header-icon.png',
+        title: 'Some App',
+        buttons: {
+          primary: {
+            label: 'Save',
+            message: 'save',
+            callback: function(){
+              ShopifyApp.Bar.loadingOn();
+              console.log('callback function called');
+            }
+          }
+        }
+      });
+    });
+  </script> -->
