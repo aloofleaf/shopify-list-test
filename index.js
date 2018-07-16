@@ -11,7 +11,7 @@ const methodOverride = require('method-override');
 const apiKey = process.env.SHOPIFY_API_KEY;
 const apiSecret = process.env.SHOPIFY_API_SECRET;
 const scope = 'write_products';
-const forwardingAddress = 'http://d1aa40c0.ngrok.io';
+const forwardingAddress = 'http://shopify-list-test.herokuapp.com';
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
