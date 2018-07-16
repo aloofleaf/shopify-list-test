@@ -17,6 +17,11 @@ app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride('_method'));
 
+app.get('/', (req, res){
+	res.send("got to the home page");
+
+});
+
 app.get('/shopify', (req, res) => {
 	const shop = req.query.shop;
 	if(shop){
