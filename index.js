@@ -109,7 +109,7 @@ app.put('/products/:id', function(req, res) {
 		'X-Shopify-Access-Token': req.query.token
 	};
 
-	res.send(req);
+	res.json(req);
 
 });
 
