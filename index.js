@@ -109,7 +109,8 @@ app.put('/products/:id', function(req, res) {
 	const apiRequestHeader = {
 		'X-Shopify-Access-Token': req.query.token
 	};
-	const product = {
+	const data = {
+		headers: apiRequestHeader,
 	  "product": {
 	   "id" : req.params.id,
 			"body_html": "new body"
@@ -117,7 +118,7 @@ app.put('/products/:id', function(req, res) {
 	};
 	const apiRequestUrl = 'https://' + req.query.shop + '/admin/products/' + req.params.id + '.json';
 
-	request.put(apiRequestUrl, {headers: apiRequestHeader})
+	request.put(apiRequestUrl, data)
 	.then((apiResponse) => {
 
 		res.render('home', 
