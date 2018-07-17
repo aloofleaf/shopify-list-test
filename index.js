@@ -81,7 +81,8 @@ app.get('/shopify/callback', (req, res) => {
 				res.render('home', 
 					{
 						apiResponse: JSON.parse(apiResponse),
-						token: accessToken
+						token: accessToken,
+						shop: shop
 						// api_key: apiKey,
 						// shop: shop
 					});
@@ -106,12 +107,33 @@ app.put('/products/:id', function(req, res) {
 		return res.status(400).send("error, no token in query");
 	}
 	const apiRequestHeader = {
-		'X-Shopify-Access-Token': req.query.token
+		'X-Shopify-Access-Token': req.query.token,
+		"product": {
+			"id" : req.params.id,
+			"body_html": "new body"
+		}
 	};
+	const apiRequestUrl = 'https://' + req.query.shop + '/admin/products/' + req.params.id + '.json';
 
-	res.json(req);
+	request.put(apiRequestUrl, {headers: apiRequestHeader})
+	.then((apiResponse) => {
 
+		res.render('home', 
+			{
+				apiResponse: JSON.parse(apiResponse),
+				token: accessToken,
+				shop: shop
+				// api_key: apiKey,
+				// shop: shop
+			});
+
+		// res.end(apiResponse);
+	})
+	.catch((error) => {
+		res.status(400).send(error.toString());
+	});
 });
+
 
 
 app.listen(process.env.PORT, ()=> {
