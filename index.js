@@ -81,6 +81,7 @@ app.get('/shopify/callback', (req, res) => {
 				res.render('home', 
 					{
 						apiResponse: JSON.parse(apiResponse),
+						token: accessToken
 						// api_key: apiKey,
 						// shop: shop
 					});
@@ -98,6 +99,18 @@ app.get('/shopify/callback', (req, res) => {
 	} else {
 		res.status(400).send('Requied parameters missing');
 	}
+});
+
+app.put('/products/:id', function(req, res) {
+	if(!req.query.token) {
+		return res.status(400).send("error, no token in query");
+	}
+	const apiRequestHeader = {
+		'X-Shopify-Access-Token': req.query.token;
+	};
+
+	console.log(req.body.body_html);
+
 });
 
 
