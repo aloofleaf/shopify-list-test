@@ -105,7 +105,7 @@ app.put('/products/:id', function(req, res) {
 	if(!req.query.token) {
 		return res.status(400).send("error, no token in query");
 	}
-	const apiRequestHeader = {
+	var header = {
 		'X-Shopify-Access-Token': req.query.token;
 	};
 
